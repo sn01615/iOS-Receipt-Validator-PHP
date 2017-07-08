@@ -1,3 +1,34 @@
+Install
+=======
+
+```bash
+composer require sn01615/i-os-receipt-validator-php
+```
+Usage
+=====
+```php
+$data = new \stdClass();
+$data->receipt = $_POST['receipt-data'];
+$data->sandbox = $_POST['sandbox'];
+
+$endpoint = $data->sandbox ? \itunesReceiptValidator::SANDBOX_URL : \itunesReceiptValidator::PRODUCTION_URL;
+
+try {
+    $rv = new \itunesReceiptValidator($endpoint, $data->receipt);
+
+    $data->environment = ($rv->getEndpoint() === \itunesReceiptValidator::SANDBOX_URL) ? 'Sandbox' : 'Production';
+
+    $data->info = $rv->validateReceipt();
+    # TODO 业务逻辑处理
+
+    $data->result = 'Success';
+} catch (\Exception $ex) {
+    $data->result = 'Fail';
+}
+
+print_r($data);
+```
+
 In App Purchase Receipt Validator - PHP
 =======================================
 

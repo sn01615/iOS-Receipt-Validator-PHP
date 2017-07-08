@@ -1,0 +1,15 @@
+{
+    "name" : "sn01615/i-os-receipt-validator-php",
+    "type" : "library",
+    "authors" : [{
+            "name" : "YangLong",
+            "email" : "168119405@qq.com"
+        }, {
+            "name" : "chrismaddern",
+            "homepage" : "https://github.com/chrismaddern/iOS-Receipt-Validator-PHP"
+        }
+    ],
+    "autoload": {
+        "classmap": ["src/"]
+    }
+}
